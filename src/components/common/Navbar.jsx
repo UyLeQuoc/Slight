@@ -16,8 +16,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   },[])
 
-  const currentUser1 = null;
-  const currentUser = {
+  const currentUser = null;
+  const currentUser1 = {
     id: 1,
     username: 'John Doe',
     email: 'johndue@gmail.com',
