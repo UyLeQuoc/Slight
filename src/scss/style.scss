@@ -1,0 +1,12 @@
+@use 'abstracts';
+@use 'vendors';
+@use 'base';
+@use 'utilities';
+@use 'components';
+@use 'pages';
+@use 'themes';
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap');
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
