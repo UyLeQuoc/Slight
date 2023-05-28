@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import CanvasPage from '@/components/CanvasPage'
 import { useEffect, useRef, useState } from 'react';
 import PptxGenJS from 'pptxgenjs';
-import { WhiteBackground } from '../../../public/white.jpg';
 import { Button } from 'antd';
 
 export default function EditorPage() {
