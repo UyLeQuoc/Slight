@@ -71,7 +71,7 @@ export default function EditorPage() {
               <Image
                 id={`preview-image-${index}`}
                 className='p-[2px] rounded-lg border-[3px] border-[gray] cursor-pointer'
-                src={<WhiteBackground />}
+                src={""}
                 width={300}
                 height={300}
                 alt={`preview-image-${index}`}
