@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as *;
+
+.active{
+    flex-grow: 1;
+}
+.editor{
+    button{
+        background-color: $color-blue-600;
+        color: white;
+    }
+}

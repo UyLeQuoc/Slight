@@ -1,13 +1,14 @@
 import { fabric } from "fabric";
 import React, { useEffect, useState } from "react";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-
+import { Button, Tooltip } from "antd";
+import {HighlightOutlined} from '@ant-design/icons';
 const CanvasPage = () => {
-  const CanvasRef = React.useRef(null);
+  const inputRef = React.useRef(null);
   const { editor, onReady } = useFabricJSEditor();
 
   const history = [];
-  const [color, setColor] = useState("#35363a");
+  const [color, setColor] = useState("#fff");
   const [cropImage, setCropImage] = useState(true);
 
   useEffect(() => {
@@ -92,12 +93,10 @@ const CanvasPage = () => {
 
   const fromSvg = () => {
     fabric.loadSVGFromString(
-      `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+      `
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="500" height="500" viewBox="0 0 500 500" xml:space="preserve">
-    <desc>Created with Fabric.js 5.3.0</desc>
-    <defs>
-    </defs>
+    
     <g transform="matrix(1 0 0 1 662.5 750)"  >
       <image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  xlink:href="https://thegraphicsfairy.com/wp-content/uploads/2019/02/Anatomical-Heart-Illustration-Black-GraphicsFairy.jpg" x="-662.5" y="-750" width="1325" height="1500"></image>
     </g>
@@ -190,64 +189,69 @@ const CanvasPage = () => {
     const svg = editor.canvas.toSVG();
     console.info(svg);
   };
-  const exportImage = () => {
-    //download Image to Jpeg
-    const image = editor.canvas.toDataURL({
-      format: "jpeg",
-      quality: 0.8,
-    });
-    //download image
-    const link = document.createElement("a");
-    link.download = "image.jpeg";
-    link.href = image;
-    link.click();
-  }
+
+  const handleAddImage = () => {
+    const file = inputRef.current.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const imageUrl = event.target.result;
+      fabric.Image.fromURL(imageUrl, (image) => {
+        // Adjust the image properties as needed
+        image.set({ left: 0, top: 0 });
+        // add image to canvas ref
+        editor.canvas.add(image);
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   return (
-    <div className="App">
-      <h1>FabricJS React Sample</h1>
-      <button onClick={onAddCircle}>Add circle</button>
-      <button onClick={onAddRectangle} disabled={!cropImage}>
-        Add Rectangle
-      </button>
-      <button onClick={addText} disabled={!cropImage}>
-        Add Text
-      </button>
-      <button onClick={toggleDraw} disabled={!cropImage}>
-        Toggle draw
-      </button>
-      <button onClick={clear} disabled={!cropImage}>
-        Clear
-      </button>
-      <button onClick={undo} disabled={!cropImage}>
-        Undo
-      </button>
-      <button onClick={redo} disabled={!cropImage}>
-        Redo
-      </button>
-      <button onClick={toggleSize} disabled={!cropImage}>
-        ToggleSize
-      </button>
-      <button onClick={removeSelectedObject} disabled={!cropImage}>
-        Delete
-      </button>
-      <button onClick={(e) => setCropImage(!cropImage)}>Crop</button>
-      <label disabled={!cropImage}>
-        <input
-          disabled={!cropImage}
-          type="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
-      </label>
-      <button onClick={exportSVG} disabled={!cropImage}>
-        {" "}
-        ToSVG
-      </button>
-      <button onClick={fromSvg} disabled={!cropImage}>
-        fromsvg
-      </button>
-      <FabricJSCanvas className={`canvas-page`} ref={CanvasRef} onReady={onReady} 
+    <div className="editor flex flex-col items-center my-4">
+      <section className="flex flex-row wrap">
+        <input ref={inputRef} type="file" accept="image/*" onChange={handleAddImage}/>
+        <Button onClick={() => addBackground()}>
+          Change Background Color
+        </Button>
+        <Button onClick={addText}>
+          Add Text
+        </Button>
+        <Tooltip title="Toggle draw">
+          <Button type="primary" icon={<HighlightOutlined />} onClick={toggleDraw} className="bg-[blue]"/>
+        </Tooltip>
+        <Button onClick={clear}>
+          Clear
+        </Button>
+        <Button onClick={undo}>
+          Undo
+        </Button>
+        <Button onClick={redo}>
+          Redo
+        </Button>
+        <Button onClick={toggleSize}>
+          ToggleSize
+        </Button>
+        <Button onClick={removeSelectedObject}>
+          Delete
+        </Button>
+        <label>
+          <input
+          
+            type="color"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </label>
+        <Button onClick={exportSVG}>
+          {" "}
+          ToSVG
+        </Button>
+        <Button onClick={fromSvg}>
+          fromsvg
+        </Button>
+      </section>
+      <FabricJSCanvas className={`canvas-page w-[1024px] h-[576px] my-10`} onReady={onReady} 
         style={{"display": "inline-block"}}
       />
     </div>
