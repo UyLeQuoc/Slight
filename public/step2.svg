@@ -1,0 +1,18 @@
+<svg width="529" height="342" viewBox="0 0 529 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="529" height="342" rx="15" fill="url(#paint0_linear_28_237)"/>
+<circle cx="105" cy="75" r="32" fill="#E52991" stroke="white" stroke-width="6"/>
+<circle cx="104" cy="174" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<circle cx="105" cy="279" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<circle cx="265" cy="75" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<circle cx="264" cy="174" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<circle cx="259.921" cy="282" r="32" fill="#E52991" stroke="white" stroke-width="6"/>
+<circle cx="423.138" cy="75" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<circle cx="422.082" cy="181" r="32" fill="#E52991" stroke="white" stroke-width="6"/>
+<circle cx="423.345" cy="286" r="32" fill="#DEDEDE" stroke="white" stroke-width="6"/>
+<defs>
+<linearGradient id="paint0_linear_28_237" x1="264.5" y1="0" x2="264.5" y2="661.675" gradientUnits="userSpaceOnUse">
+<stop stop-color="#64BCF5"/>
+<stop offset="1" stop-color="#1335ED"/>
+</linearGradient>
+</defs>
+</svg>

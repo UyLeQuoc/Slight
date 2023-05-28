@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as *;
+
+.footer {
+    margin: 6rem 0 0rem 0;
+    padding-bottom: 1rem;
+
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,0.9850533963585434) 95%, rgba(8,35,181,0.13351278011204482) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,0.9850533963585434) 95%, rgba(8,35,181,0.13351278011204482) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.9850533963585434) 95%, rgba(8,35,181,0.13351278011204482) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#0823b5",GradientType=1);
+    
+    
+    
+    .content-container {
+
+        .logo {
+            width: 20%;
+            font-weight: bold;
+        }
+        .title {
+            font-size: 2rem;
+        }
+        .aboutUs-container {
+            width: 35%;
+
+            .aboutUs-description {
+                font-size: 1rem;
+            }
+        }
+
+        .contact-container {
+            width: 20%;
+
+            .contact-socials {
+
+                .contact-socials-title {
+                    margin-top: 0.2rem;
+                }
+                
+                img {
+                    margin: 0 0.3rem;
+                }
+            }
+        }
+
+        
+
+    }
+
+    .copyright {
+        text-align: center;
+        font-size: 1rem;
+    }
+}
