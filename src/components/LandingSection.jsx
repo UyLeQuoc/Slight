@@ -1,10 +1,12 @@
 import React from 'react'
-
+import CallToActionSection from '@/components/CallToAction'
+import GuideSection from './GuideSection'
 function LandingPage() {
   return (
-    <div style={{'backgroundColor': 'blue'}}>
-      LandingPage
-    </div>
+    <>
+      <CallToActionSection></CallToActionSection>
+      <GuideSection></GuideSection>
+    </>
   )
 }
 

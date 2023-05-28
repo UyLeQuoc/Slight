@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+
+.guide-container {
+    margin-top: 6rem;
+    .guide-title {
+        font-size: 2rem;
+        font-weight: normal;
+        text-align: center;
+        
+        .guide-title-line2 {
+            span {
+                color: $color-blue-800;
+            }
+            
+        }
+    }
+}
