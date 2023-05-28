@@ -2,9 +2,9 @@ import React from 'react'
 
 function CallToActionSection() {
   return (
-    <div className='cta-container flex flex-row mx-[6vw]' style={{'backgroundColor': 'white'}}>
+    <div className='cta-container flex flex-row px-[6vw] justify-center'>
       <div className='cta-text basis-1/2 flex flex-col justify-end'>
-        <div className='cta-title text-5xl'>EZ CREATING PRESENTATION 
+        <div className='cta-title'>EZ CREATING PRESENTATION 
 SLIDES WITH <span className=''>SLIGHT</span></div>
         <div className='cta-description'>
         Presentation will be no longer troublesome, time consuming  anymore. With Slight, AI will help you create a suitable and captivate captivating slide from scratch with your document file or modify your existing one ...
@@ -19,9 +19,7 @@ SLIDES WITH <span className=''>SLIGHT</span></div>
         HOW TO USE <img src='/cta-search.svg' className=''></img>
         </span>
       </div>
-      <div className='cta-img basis-1/2'>
-        <img className='' src='/cta-macos.svg' alt='website on mac'></img>
-      </div>
+        <img className='cta-img ' src='/cta-macos.svg' alt='website on mac'></img>
     </div>
   )
 }

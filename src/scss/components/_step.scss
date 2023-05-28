@@ -1,14 +1,16 @@
 @use '../abstracts/variables' as *;
 
 .step-container {
-    padding: 2rem;
+    margin: 2rem;
     background: rgb(255,255,255);
+    border-radius: 2rem;
 background: -moz-linear-gradient(133deg, rgba(255,255,255,1) 74%, rgba(196,242,250,1) 100%);
 background: -webkit-linear-gradient(133deg, rgba(255,255,255,1) 74%, rgba(196,242,250,1) 100%);
 background: linear-gradient(133deg, rgba(255,255,255,1) 74%, rgba(196,242,250,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#c4f2fa",GradientType=1);
     .step-text {
         width: 45%;
+        margin-top: 2rem;
         .step-title {
             font-size: 2.3rem;
             color: $color-blue-800;
@@ -22,7 +24,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
     }
 
     .step-img {
-
+        img {
+            margin: 2rem;
+        }
         img[src = '/step4.svg'] {
             margin: -5rem;
         }
