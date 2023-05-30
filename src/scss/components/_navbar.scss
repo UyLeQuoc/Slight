@@ -4,24 +4,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all ease-in-out 0.2s;
+  transition: all ease-out 0.2s;
   position: sticky;
   top: 0;
+  z-index: 1000;
 
   &.active{
-    background-color: white;
+    background-color: $color-blue-800;
     color: black;
+    span{
+      color: white;
+    }
+    .logo{
+      .text{
+        color: white !important;
+      }
+    }
   }
 
   .container{
-    width: 1200px;
+    width: 1400px;
     display: flex;
     justify-content: space-between;
     align-items: 20px 0;
-    padding: 5px 0;
+    padding: 10px 0;
 
     .logo{
-      font-size: 34px;
+      font-size: 40px;
       font-weight: bold;
 
       .text{
@@ -35,6 +44,7 @@
       font-weight: 500;
       span{
         cursor: pointer;
+        font-size: 20px;
       }
 
       .user{

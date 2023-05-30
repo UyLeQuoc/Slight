@@ -29,15 +29,18 @@ const content = [
 ]
 function GuideSection() {
   return (
-    <div className='guide-container flex flex-col justify-center content-center'>
-      <div className='guide-title flex flex-col justify-center content-center'>
-        <span className='guide-title-line1'>Save time</span> 
-        <span className='guide-title-line2'>within <span>FEW CLICKS</span></span></div>
-      <div className='guide-stepList'>
-        {
-          content.map((o) => (
-            <Step key={o.id} title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc}></Step>
-        ))}
+    <div className='guide-container flex justify-center'>
+      <div className='flex flex-col justify-center content-center w-[1400px]'>
+        <div className='guide-title flex flex-col justify-center content-center'>
+          <span className='guide-title-line1'>Save time</span> 
+          <span className='guide-title-line2'>within <span>FEW CLICKS</span></span>
+        </div>
+        <div className='guide-stepList'>
+          {
+            content.map((o) => (
+              <Step key={o.id} title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc}></Step>
+          ))}
+        </div>
       </div>
     </div>
 

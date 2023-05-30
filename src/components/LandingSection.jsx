@@ -6,10 +6,10 @@ import MissionSection from '@/components/MissionSection'
 function LandingPage() {
   return (
     <>
-      <CallToActionSection></CallToActionSection>
-      <GuideSection></GuideSection>
-      <PromotionSection></PromotionSection>
-      <MissionSection></MissionSection>
+      <CallToActionSection />
+      <GuideSection />
+      <PromotionSection />
+      <MissionSection />
     </>
   )
 }

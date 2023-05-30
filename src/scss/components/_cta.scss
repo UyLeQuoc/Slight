@@ -1,7 +1,8 @@
 @use '../abstracts/variables' as *;
 .cta-container {
-    margin-top: 2rem;
-    padding-bottom: 1.75rem;
+    margin: 0 auto;
+    height: calc(100vh - 60px);
+    
 
 background: rgb(255,255,255);
 background: -moz-linear-gradient(180deg, rgba(255,255,255,0.9850533963585434) 90%, rgba(246,246,246,1) 100%);
@@ -69,6 +70,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
 
     .cta-img {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
     }
 }

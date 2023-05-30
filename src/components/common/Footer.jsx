@@ -2,8 +2,8 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='footer'>
-      <div className='content-container flex flex-row justify-around'>
+    <div className='footer flex flex-col items-center'>
+      <div className='content-container flex flex-row justify-between'>
         <div className='logo'>
           <img src='/footer-logo.svg'></img>
         </div>
