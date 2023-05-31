@@ -5,7 +5,7 @@ import Reveal from '@/layout/Reveal'
 const content = [
     { 'id': 1,
       'title': 'STEP 1: Start by Adding Your Text',
-      'description': 'Enter the text that you want to create your presentation from. You can either write it directly into the text box, paste it in from any source or upload your document under formats .DOC, .DOCX, .PDF',
+      'description': 'Enter the text that you want to create your presentation from. You can either write it directly into the text box, paste it in from any source or upload your document under formats ',
       'titleOnLeftSide': true,
       'imgSrc': '/step1.svg',
     },
@@ -38,9 +38,9 @@ function GuideSection() {
         </div>
         <div className='guide-stepList'>
             {
-              content.map((o) => (
+              content.map((o, index) => (
               <Reveal key={o.id}>
-                <Step title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc}></Step>
+                <Step title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc} children={index == 0 ? '.DOC, .DOCX, .PDF' : ''}></Step>
               </Reveal>
             ))}
         </div>
