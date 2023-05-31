@@ -1,7 +1,9 @@
+import Reveal from '@/layout/Reveal'
 import React from 'react'
 
 function PromotionSection() {
   return (
+    <Reveal>
     <div className='promotion-container'>
         <div className='title'>PROMOTIONS</div>
         <div className='plans flex flex-row justify-center'>
@@ -54,6 +56,7 @@ function PromotionSection() {
             </div>
         </div>
     </div>
+    </Reveal>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Step from '@/components/Step'
+import Reveal from '@/layout/Reveal'
 
 const content = [
     { 'id': 1,
@@ -36,10 +37,12 @@ function GuideSection() {
           <span className='guide-title-line2'>within <span>FEW CLICKS</span></span>
         </div>
         <div className='guide-stepList'>
-          {
-            content.map((o) => (
-              <Step key={o.id} title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc}></Step>
-          ))}
+            {
+              content.map((o) => (
+              <Reveal key={o.id}>
+                <Step title={o.title} description={o.description} titleOnLeftSide={o.titleOnLeftSide} imgSrc={o.imgSrc}></Step>
+              </Reveal>
+            ))}
         </div>
       </div>
     </div>

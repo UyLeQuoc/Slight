@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as *;
+
+.progress-bar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, $color-pink-600, $color-pink-800);
+  transform-origin: 0%;
+  z-index: 1000;
+}
