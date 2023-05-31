@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import useAuth from "@/hooks/auth";
+import Link from "next/link";
 
 const Navbar = () => {
   const { scrollYProgress } = useScroll();
   const [active, setActive] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
+  const {user, logout} = useAuth();
+  const currentUser = user;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +24,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   },[])
 
-  const currentUser = null;
-  const currentUser1 = {
-    id: 1,
-    username: 'John Doe',
-    email: 'johndue@gmail.com',
-    isPremium: true
-  }
+  
 
   return (
     <div className={active ? "navbar active": "navbar"}>
@@ -38,12 +37,12 @@ const Navbar = () => {
           <a className='menu__item' href="#upgrade">Upgrade</a>
           <a className='menu__item' href="#about">About us</a>
           {!currentUser && (
-            <button className='menu__item'>Login</button>
+            <Link href='/login' className='menu__item login'>Login</Link>
           )}
           {
             currentUser && (
-              <div className="user" onClick={() => setShowMenu(!showMenu)}>
-                <img src="https://picsum.photos/200" alt="user" />
+              <div className="user cursor-pointer" onClick={() => setShowMenu(!showMenu)}>
+                <img src={currentUser.photoURL} alt="user" />
                 <span>{currentUser?.username}</span>
                 {
                   showMenu && (
@@ -56,7 +55,7 @@ const Navbar = () => {
                         )
                       }
                       <span>View All Slides</span>
-                      <span>Logout</span>
+                      <span onClick={() => logout()}>Logout</span>
                     </div>
                   )
                 }
