@@ -43,6 +43,11 @@
                 margin: 1rem 0;
             }
 
+            .active {
+                background-color: $color-white;
+                color: $color-blue-800;
+            }
+
             ul {
                 list-style-type: disc;
                 margin-left: 1rem;

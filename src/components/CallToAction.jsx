@@ -24,6 +24,7 @@ function CallToActionSection() {
         </div>
         <img className='cta-img' src='/cta-macos.svg' alt='website on mac'></img>
       </div>
+      <div id='howto' className='self-end mb-[1rem]'></div>
     </div>
   )
 }
