@@ -4,6 +4,7 @@ import React from 'react'
 import LandingSection from '@/components/LandingSection'
 
 function Home() {
+
   return (
     <>
       <Navbar />

@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Step({title, description, titleOnLeftSide, imgSrc}) {
+function Step({title, description, titleOnLeftSide, imgSrc, children}) {
   return (
     <div className={ titleOnLeftSide ? 'step-container flex flex-row justify-between relative'
                                     : 'step-container flex flex-row-reverse justify-evenly step-right relative'}>
         <div className='step-text flex flex-col'>
             <div className='step-title z-10'>{title}</div>
-            <div className='step-description z-10'>{description}</div>
+            <div className='step-description z-10'>{description}<span className='italic text-blue-300'>{children}</span></div>
             <span 
             className={`z-[0] bottom-[-70px] text-[220px] 
             absolute font-extrabold text-transparent 
