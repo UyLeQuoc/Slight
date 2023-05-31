@@ -1,4 +1,3 @@
-import "@/config/firebase.config";
 import { AuthProvider } from '@/hooks/auth'
 import AppLayout from '@/layout/AppLayout'
 import AuthStateChanged from '@/layout/AuthStateChanged'

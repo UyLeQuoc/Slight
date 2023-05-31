@@ -1,4 +1,4 @@
-import { getApp } from "firebase/app";
+import app from "@/config/firebase.config";
 import {
 	signInWithPopup,
 	getAuth,
@@ -36,4 +36,4 @@ class AuthService {
 	}
 }
 
-export default new AuthService(getApp());
+export default new AuthService(app);
