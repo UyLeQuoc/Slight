@@ -1,2 +1,76 @@
 @use '../abstracts/variables' as *;
 
+.payment-container {
+
+    .paymant-title {
+        color: $color-blue-800;
+        font-size: 3rem;
+        font-weight: bold;
+        padding: 3rem 0 1rem 0;
+        text-align: center;
+    }
+    
+    
+    .payment-method-logo-container {
+        padding: 1rem;
+    }
+    
+    .payment-methods {
+
+        .selected-payment-icon {
+            background-color: #F3F4FB;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .selected-payment-content{
+            background-color: #F3F4FB;
+            border-radius: 0rem 0rem 1rem 1rem;
+        }
+
+        .selected-payment-content[key = '_1']{
+            border-radius: 0 1rem 1rem 1rem;
+        }
+
+        .selected-payment-content[key = '_4']{
+            border-radius: 1rem 0 1rem 1rem;
+        }
+
+
+
+        .payment-method-info-title {
+            font-size: 1.3rem;
+        }
+
+        .payment-method-info-description {
+            font-size: 0.7rem;
+            font-style: italic;
+            padding-top: 1.2rem;
+        }
+
+        .payment-method-info-complete-btn {
+            color: $color-white;
+            background-color: $color-pink-800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.8rem;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            justify-self: end;
+        }
+
+        .unvailable-title{
+            font-size: 5rem;
+            font-weight: bolder;
+            text-align: center;
+            color: rgba(8, 35, 181, 0.3);
+            mix-blend-mode: normal;
+            width: 100%;
+            color: transparent;
+background: #666666;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+background-clip: text;
+text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+        }
+    }
+
+}
