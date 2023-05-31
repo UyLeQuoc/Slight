@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { motion, useScroll } from "framer-motion";
 
 const Navbar = () => {
+  const { scrollYProgress } = useScroll();
   const [active, setActive] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -12,6 +14,7 @@ const Navbar = () => {
         setActive(false);
       }
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   },[])
@@ -31,9 +34,9 @@ const Navbar = () => {
           <span className='text'>SLIGHT</span>
         </div>
         <div className='menu'>
-          <span className='menu__item'>Upgrade</span>
-          <span className='menu__item'>How to</span>
-          <span className='menu__item'>About us</span>
+          <a className='menu__item' href="#howto">How to</a>
+          <a className='menu__item' href="#upgrade">Upgrade</a>
+          <a className='menu__item' href="#about">About us</a>
           {!currentUser && (
             <button className='menu__item'>Login</button>
           )}
@@ -62,6 +65,10 @@ const Navbar = () => {
           }
         </div>
       </div>
+      <motion.div
+        className="progress-bar"
+        style={{ scaleX: scrollYProgress }}
+      />
     </div>
   )
 }

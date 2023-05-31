@@ -20,6 +20,9 @@
         color: white !important;
       }
     }
+    .menu__item{
+      color: white;
+    }
   }
 
   .container{
@@ -44,7 +47,10 @@
       font-weight: 500;
       span{
         cursor: pointer;
+      }
+      .menu__item{
         font-size: 20px;
+        
       }
 
       .user{
@@ -63,7 +69,6 @@
           display: flex;
           flex-flow: column nowrap;
           gap: 10px;
-
           position: absolute;
           top: 50px;
           background-color: white;
