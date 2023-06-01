@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+
+.step-1-container {
+
+
+    .step-title {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        color: $color-blue-800;
+        margin-top: 2rem;
+    }
+
+    .step-tips {
+
+    }
+
+    .step-input-container {
+        background-color: $color-gray;
+        height: 70vh;
+        border-radius: 2rem;
+        margin-top: 2rem;
+    }
+
+    .step-button-container {
+        margin-top: 2rem;
+
+        div {
+            margin: 1rem;
+            background-color: $color-pink-800;
+            color: $color-white;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+    }
+}
