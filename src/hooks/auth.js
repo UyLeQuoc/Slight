@@ -12,7 +12,7 @@ export function AuthProvider(props) {
   const [error , setError] = useState("");
 
   const loginWithGoogle = async () => {
-    const { user, error } = await AuthService.loginWithGoogle();
+    const { user, error } = await AuthService.loginWithGoogle();    
     setUser(user ?? null);
     setError(error ?? "");
   }
@@ -22,7 +22,24 @@ export function AuthProvider(props) {
     setUser(null);
   }
 
-  const value = { user, error, loginWithGoogle, logout, setUser };
+  const updateUserToPremium = async () => {
+    await AuthService.updateUserToPremium();
+    setUser({
+      ...user,
+      isPremium: true,
+    });
+  }
+
+  const getUserRole = async () => {
+    const isPremium = await AuthService.getUserRole();
+    setUser({
+      ...user,
+      isPremium: isPremium,
+    });
+  }
+
+
+  const value = { user, error, loginWithGoogle, logout, setUser, updateUserToPremium, getUserRole};
 
   return (
     <authContext.Provider value={value} {...props} />

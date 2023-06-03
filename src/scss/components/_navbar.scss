@@ -58,8 +58,8 @@
         align-items: center;
         position: relative;
         img{
-          width: 30px;
-          height: 30px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           object-fit: cover;
           margin-right: 10px;
@@ -70,7 +70,7 @@
           flex-flow: column nowrap;
           gap: 10px;
           position: absolute;
-          top: 50px;
+          top: 60px;
           background-color: white;
           padding: 20px;
           right: 0;
@@ -78,6 +78,7 @@
           width: 200px;
           font-weight: 300;
           border-radius: 10px;
+          z-index: 2000;
 
           span{
             color: gray
@@ -87,7 +88,7 @@
             content: '';
             position: absolute;
             top: -20px;
-            right: 10px;
+            right: 20px;
             border: 10px solid transparent;
             border-bottom-color: gray;
           }
@@ -95,7 +96,7 @@
             content: '';
             position: absolute;
             top: -19px;
-            right: 10px;
+            right: 20px;
             border: 10px solid transparent;
             border-bottom-color: white;
           }

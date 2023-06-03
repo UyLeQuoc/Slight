@@ -15,6 +15,23 @@ export function withPublic(Component) {
 	};
 }
 
+export function withPremium(Component) {
+	return function withPremium(props) {
+		const auth = useAuth();
+		const router = useRouter();
+		
+		if (!auth.user) {
+			router.replace("/login");
+			return <h1>Loading...</h1>;
+		}
+		auth.getUserRole()
+		if (auth.user.isPremium === false) {
+			return <h1>Bạn cần nạp để xem chức năng này</h1>;
+		}
+
+		return <Component auth={auth} {...props} />;
+	};
+}
 export function withProtected(Component) {
 	return function WithProtected(props) {
 		const auth = useAuth();
