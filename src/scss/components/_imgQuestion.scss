@@ -1,0 +1,25 @@
+@use '../abstracts/variables' as *;
+
+.create-step2-img-question-container {
+
+    .title{
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $color-blue-800;
+        margin-top: 0.5rem;
+    }
+
+    .options-list {
+
+
+        .option {
+            background-color: $color-gray;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .selected {
+            border: 0.2rem solid $color-pink-800;
+        }
+    }
+}

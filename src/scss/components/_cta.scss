@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as *;
 .cta-container {
     margin: 0 auto;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 80px);
     
 
 background: rgb(255,255,255);
@@ -39,7 +39,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
         color: $color-white;
         background-color: $color-pink-800;
         font-size: 1.3rem;
-        font-weight: 1rem;
         width: 15rem;
         padding: 0.5rem;
         padding-left: 0.7rem;

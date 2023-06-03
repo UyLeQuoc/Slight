@@ -45,6 +45,7 @@ function GuideSection() {
             ))}
         </div>
       </div>
+      <div id='upgrade' className='self-end mb-[1rem]'></div>
     </div>
 
 

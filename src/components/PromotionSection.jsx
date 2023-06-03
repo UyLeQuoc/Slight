@@ -55,6 +55,7 @@ function PromotionSection() {
                 </ul>
             </div>
         </div>
+        <div id='about' className='self-end mb-[1rem]'></div>
     </div>
     </Reveal>
   )
