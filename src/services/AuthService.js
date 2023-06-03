@@ -1,4 +1,3 @@
-import app from "@/config/firebase.config";
 import {
 	signInWithPopup,
 	getAuth,
@@ -6,10 +5,14 @@ import {
 	signOut,
 	onAuthStateChanged,
 } from "firebase/auth";
+import { collection, doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { app } from "@/config/firebase.config";
+import { notification } from "antd";
 
 class AuthService {
 	constructor(firebaseApp) {
 		this.auth = getAuth(firebaseApp);
+		this.db = getFirestore(firebaseApp);
 	}
 
 	waitForUser(callback) {
@@ -21,6 +24,14 @@ class AuthService {
 	loginWithGoogle() {
 		return signInWithPopup(this.auth, new GoogleAuthProvider())
 			.then((userCred) => {
+				setDoc(doc(this.db, "users", userCred.user.uid), {
+					email: userCred.user.email,
+					name: userCred.user.displayName,
+					photoUrl: userCred.user.photoURL,
+				},{
+					merge: true
+				});
+
 				return {
 					user: userCred.user,
 				};
@@ -31,6 +42,24 @@ class AuthService {
 				};
 			});
 	}
+	updateUserToPremium() {
+		return setDoc(doc(this.db, "users", this.auth.currentUser.uid), {
+			isPremium: true,
+		}, {
+			merge: true
+		})
+	}
+	getUserRole() {
+		return getDoc(doc(this.db, "users", this.auth.currentUser.uid)).then((doc) => {
+			if (doc.exists()) {
+				return doc.data().isPremium;
+			} else {
+				
+				return false;
+			}
+		});
+	}
+
 	async logout() {
 		await signOut(this.auth);
 	}

@@ -1,6 +1,8 @@
+import { CardElement } from '@stripe/react-stripe-js'
+import { Button } from 'antd'
 import React from 'react'
 
-function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active}}) {
+function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active}, paymentHandler, isPaymentHandler}) {
   return (
     <div className='payment-method-container flex flex-row w-[100%] h-[100%] selected-payment-content py-[2rem]' key={'_' + id}>
         {active && (<>
@@ -29,8 +31,12 @@ function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active}}) {
             </>
         )}
         {!active && (
-            <div className='unavailable-title-container w-full flex flex-col justify-center'>
-                <div className='unvailable-title'>COMMING SOON</div>
+            <div className='unavailable-title-container w-full flex flex-col justify-center p-10'>
+                <div>
+                    <span className=''>Credit or debit card</span>
+                    <CardElement className='bg-white p-4 my-2'/>
+                    <Button onClick={paymentHandler} type='primary' className='bg-blue-500' loading={isPaymentHandler}>Submit Payment</Button>
+                </div>
             </div>
         )}
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import PaymentInfo from './PaymentInfo';
 
-function PaymentSection() {
+function PaymentSection({paymentHandler, isPaymentHandler}) {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(1);
 
     const handlePaymentMethodChange = (id) => {
@@ -56,7 +56,7 @@ function PaymentSection() {
                             </div>)
                         )}
                     </div>
-                    {<PaymentInfo paymentInfo={paymentList.at(selectedPaymentMethod-1)}></PaymentInfo>}
+                    <PaymentInfo paymentInfo={paymentList.at(selectedPaymentMethod-1)} paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}></PaymentInfo>
                 </div>
             </div>
         </div>

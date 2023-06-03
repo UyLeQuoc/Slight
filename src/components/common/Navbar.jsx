@@ -33,9 +33,9 @@ const Navbar = () => {
           <span className='text'>SLIGHT</span>
         </div>
         <div className='menu'>
-          <a className='menu__item' href="/#howto">How to</a>
-          <a className='menu__item' href="/#upgrade">Upgrade</a>
-          <a className='menu__item' href="/#about">About us</a>
+          <Link className='menu__item' href="/#howto">How to</Link>
+          <Link className='menu__item' href="/#upgrade">Upgrade</Link>
+          <Link className='menu__item' href="/#about">About us</Link>
           {!currentUser && (
             <Link href='/login' className='menu__item login'>Login</Link>
           )}
