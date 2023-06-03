@@ -1,4 +1,5 @@
 import Reveal from '@/layout/Reveal'
+import Link from 'next/link'
 import React from 'react'
 
 function PromotionSection() {
@@ -17,9 +18,9 @@ function PromotionSection() {
                 <div className='description'>
                     Good enough to get started
                 </div>
-                <div className='getStartedBtn'>
+                <Link href="/login" className='getStartedBtn'>
                     Get Started
-                </div>
+                </Link>
                 <ul className='perks-container'>
                     <li>
                         3 Presentaions / month
@@ -39,9 +40,9 @@ function PromotionSection() {
                 <div className='description'>
                     Perfect plan for students and educators
                 </div>
-                <div className='getStartedBtn'>
+                <Link href="/payment" className='getStartedBtn'>
                     Get Started
-                </div>
+                </Link>
                 <ul className='perks-container'>
                     <li>
                         10 Presentaions / month

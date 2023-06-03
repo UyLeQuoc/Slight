@@ -8,7 +8,7 @@ function CreateSection() {
   
   return (
     <div className='create-step-container'>
-        <Step2></Step2>
+        <Step1 />
     </div>
   )
 }

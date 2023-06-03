@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
       <AppLayout>
         <AuthStateChanged>
           <Elements stripe={stripePromise}>
-            <Component {...pageProps} />  
+            <Component {...pageProps} />
           </Elements>
         </AuthStateChanged>
       </AppLayout>

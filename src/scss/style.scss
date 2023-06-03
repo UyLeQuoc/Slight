@@ -9,16 +9,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap');
 body{
   font-family: 'Source Sans Pro', sans-serif;
-  
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior: smooth !important;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }

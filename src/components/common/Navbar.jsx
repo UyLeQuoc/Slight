@@ -30,7 +30,7 @@ const Navbar = () => {
     <div className={active ? "navbar active": "navbar"}>
       <div className='container'>
         <div className='logo'>
-          <span className='text'>SLIGHT</span>
+          <Link href="/#" className='text'>SLIGHT</Link>
         </div>
         <div className='menu'>
           <Link className='menu__item' href="/#howto">How to</Link>

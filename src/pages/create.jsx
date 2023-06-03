@@ -7,10 +7,10 @@ import React from 'react'
 function create() {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <CreateSection />
-      <PromotionSection></PromotionSection>
-      <Footer></Footer>
+      <PromotionSection />
+      <Footer />
     </>
   )
 }
