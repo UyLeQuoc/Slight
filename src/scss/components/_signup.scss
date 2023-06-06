@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as *;
+
+.signup-form-wrapper {
+    width: 100vw;
+
+    .signup-form-container {
+        width: 80%;
+
+        .signup-form {
+            width: 32vw;
+            background-color: #F6F7FB;
+            margin: 4rem 0 2rem 0;
+            border-radius: 1rem;
+            
+
+            .title {
+                font-size: 2.5rem;
+                padding: 1rem;
+                margin: 1rem 1rem 0 1rem;
+                font-weight: 600;
+            }
+
+            .input-container {
+
+                input {
+                    margin: 0.75rem 2rem;
+                    padding: 1.3rem;
+                    border-radius: 0.7rem;
+                    font-size: 1.3rem;
+                }
+            }
+
+
+            .signup-with-creds-btn {
+                background-color: $color-pink-800;
+                width: 30%;
+                padding: 0.3rem;
+                color: $color-white;
+                font-weight: 500;
+                font-size: 1.5rem;
+                text-align: center;
+                border-radius: 0.7rem;
+                margin: 1rem 0 1.75rem 0;
+            }
+
+            
+
+        }
+    }
+}
