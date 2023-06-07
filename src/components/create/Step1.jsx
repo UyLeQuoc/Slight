@@ -1,4 +1,4 @@
-import { Button, Input, Upload, message } from 'antd';
+import { Button, ConfigProvider, Input, Upload, message } from 'antd';
 import React from 'react'
 import { useState } from 'react';
 
@@ -23,22 +23,30 @@ const props = {
     },
   };
 
-function Step1() {
+function Step1({nextStep, topic, setTopic}) {
   return (
     <div className='flex flex-row justify-center'>
         <div className='step-1-container w-[80vw] flex flex-col justify-evenly'>
             <div className='step-title '>STEP 1</div>
-            <div className='step-tips'>
-                <span className='font-bold'>
-                Tips: 
+            <div className='step-tips text-lg'>
+                <span className='font-bold mr-2'>
+                Tips:  
                 </span>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                 Choose Your Topic
             </div>
             <div className='step-input-container flex flex-col justify-center'>
-                <Input.TextArea rows={20} placeholder='Type or paste (Ctrl+V) your text here or upload a document'/>
+                <Input.TextArea rows={20} value={topic} onChange={(e) => setTopic(e.target.value)} placeholder='Type or paste (Ctrl+V) your text here or upload a document'/>
             </div>
             <div className='step-button-container flex flex-row justify-center'>
-                <div className='next-step-button cursor-pointer'>Next Step</div>
+            <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: '#e52991',
+                  },
+                }}
+              >
+              <Button size='large' type='primary' className='cursor-pointer bg-[#e52991]' onClick={nextStep}>Next Step</Button>
+            </ConfigProvider>
             </div>
         </div>
     </div>

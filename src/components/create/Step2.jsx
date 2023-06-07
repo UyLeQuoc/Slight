@@ -1,8 +1,9 @@
 import React from 'react'
 import TextQuestion from './Step2Question/TextQuestion'
 import ImgQuestion from './Step2Question/ImgQuestion'
+import { Button, ConfigProvider, Input, Tooltip } from 'antd'
 
-function Step2() {
+function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumberOfSlides, wordsPerSlide, setWordsPerSlide}) {
   const questionnaire = [
     {
       questionId : 0,
@@ -58,20 +59,41 @@ function Step2() {
         <div className='step-2-container w-[80vw] flex flex-col justify-evenly'>
             <div className='step-title '>STEP 2</div>
             <div className='step-tips'>
-                <span className='font-bold'>
-                Tips: 
-                </span>
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
             <div className='step-input-container flex flex-col'>
-                {questionnaire.map( (question) => 
-                  (question.type == 'text' ? <TextQuestion key={question.questionId} questionInfo={question}></TextQuestion>
-                                          : <ImgQuestion key={question.questionId} questionInfo={question}></ImgQuestion>
-                  )
-                )}
+              <div className='step-input-title'>Number Of Slides</div>
+              <Input 
+                type="number"
+                min={5}
+                max={30}
+                value={numberOfSlides}
+                onChange={(e) => setNumberOfSlides(e.target.value)}
+                placeholder='Number of Slides(1-10)'
+              />
             </div>
-            <div className='step-button-container flex flex-row justify-center'>
-                <div className='next-step-button'>Next Step</div>
+            <div className='step-input-container flex flex-col'>
+              <div className='step-input-title'>Words Per Slide</div>
+              <Input 
+                type="number"
+                min={20}
+                placeholder='Words Per Slide'
+                value={wordsPerSlide}
+                onChange={(e) => setWordsPerSlide(e.target.value)}
+              />
+            </div>
+            <div className='step-button-container flex flex-row justify-center items-center'>
+              <ConfigProvider
+                  theme={{
+                    token: {
+                      colorPrimary: '#e52991',
+                    },
+                  }}
+                >
+                <Button size='large' className='next-step-button cursor-pointer mr-5' onClick={prevStep}>Previous Step</Button>
+                <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' loading={isFetchLoading} onClick={submitHandler}>Submit</Button>
+              </ConfigProvider>
+              
             </div>
         </div>
     </div>

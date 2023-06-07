@@ -1,15 +1,34 @@
 import { fabric } from "fabric";
 import React, { useEffect, useState } from "react";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-import { Button, Tooltip } from "antd";
+import { Button, ColorPicker, Divider, Tooltip } from "antd";
 import {HighlightOutlined} from '@ant-design/icons';
-const CanvasPage = () => {
+import undoIcon from '../../public/editor/undo.svg';
+import redoIcon from '../../public/editor/redo.svg';
+import brushIcon from '../../public/editor/brush.svg';
+import backgroundIcon from '../../public/editor/change-background-color.svg';
+import thickLine from '../../public/editor/thick-line.svg';
+import thinLine from '../../public/editor/thin-line.svg';
+import pageIcon from '../../public/editor/add-page.svg';
+import downloadIcon from '../../public/editor/download.svg';
+import textIcon from '../../public/editor/text-insert.svg';
+import clearIcon from '../../public/editor/clear-page.svg';
+import deleteIcon from '../../public/editor/delete.svg';
+import uploadImageIcon from '../../public/editor/upload-image.svg';
+import uploadSVGIcon from '../../public/editor/upload-svg.svg';
+
+
+import Image from "next/image";
+
+const CanvasPage = ({downloadAllPages, addPage}) => {
   const inputRef = React.useRef(null);
   const { editor, onReady } = useFabricJSEditor();
 
   const history = [];
-  const [color, setColor] = useState("#fff");
+  const [color, setColor] = useState("#ffffff");
   const [cropImage, setCropImage] = useState(true);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [freeDrawingBrushWidth, setFreeDrawingBrushWidth] = useState(5);
 
   useEffect(() => {
     if (!editor || !fabric) {
@@ -130,16 +149,24 @@ const CanvasPage = () => {
     if (!editor || !fabric) {
       return;
     }
-    editor.canvas.setHeight(576);
-    editor.canvas.setWidth(1024);
+    editor.canvas.setHeight(500);
+    editor.canvas.setWidth(889);
     addBackground();
     editor.canvas.renderAll();
   }, [editor?.canvas.backgroundImage]);
 
-  const toggleSize = () => {
-    editor.canvas.freeDrawingBrush.width === 12
-      ? (editor.canvas.freeDrawingBrush.width = 5)
-      : (editor.canvas.freeDrawingBrush.width = 12);
+  const increaseSize = () => {
+    let size = freeDrawingBrushWidth + 5;
+    editor.canvas.freeDrawingBrush.width = size;
+    setFreeDrawingBrushWidth(size); 
+  };
+  const decreaseSize = () => {
+    let size = freeDrawingBrushWidth - 5;
+    if (size < 5) {
+      size = 5;
+    }
+    editor.canvas.freeDrawingBrush.width = size;
+    setFreeDrawingBrushWidth(size);
   };
 
   useEffect(() => {
@@ -152,6 +179,7 @@ const CanvasPage = () => {
 
   const toggleDraw = () => {
     editor.canvas.isDrawingMode = !editor.canvas.isDrawingMode;
+    setIsDrawing(editor.canvas.isDrawingMode);
   };
   const undo = () => {
     if (editor.canvas._objects.length > 0) {
@@ -209,49 +237,67 @@ const CanvasPage = () => {
 
   return (
     <div className="editor flex flex-col items-center my-4">
-      <section className="flex flex-row wrap">
-        <input ref={inputRef} type="file" accept="image/*" onChange={handleAddImage}/>
-        <Button onClick={() => addBackground()}>
-          Change Background Color
-        </Button>
-        <Button onClick={addText}>
-          Add Text
-        </Button>
-        <Tooltip title="Toggle draw">
-          <Button type="primary" icon={<HighlightOutlined />} onClick={toggleDraw} className="bg-[blue]"/>
+      <section className="flex flex-row wrap bg-blue-200 p-2 rounded-md items-center">
+        <Divider type="vertical"/>
+        <Tooltip title="Add Page">
+          <span onClick={addPage} className="editor-icon">
+            <Image src={pageIcon} alt="addPage" height={30} width={30}/>
+          </span>
         </Tooltip>
-        <Button onClick={clear}>
-          Clear
-        </Button>
-        <Button onClick={undo}>
-          Undo
-        </Button>
-        <Button onClick={redo}>
-          Redo
-        </Button>
-        <Button onClick={toggleSize}>
-          ToggleSize
-        </Button>
-        <Button onClick={removeSelectedObject}>
-          Delete
-        </Button>
-        <label>
-          <input
-          
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
-        </label>
-        <Button onClick={exportSVG}>
+        <Tooltip title="Download All Page">
+          <span onClick={downloadAllPages} className="editor-icon">
+            <Image src={downloadIcon} alt="downloadPage" height={30} width={30}/>
+          </span>
+        </Tooltip>
+        <Divider type="vertical"/>
+        <span onClick={undo} className="editor-icon">
+          <Image src={undoIcon} alt="undo" height={30} width={30}/>
+        </span>
+        <span onClick={redo} className="editor-icon">
+          <Image src={redoIcon} alt="redo" height={30} width={30}/>
+        </span>
+        <Divider type="vertical"/>
+        <span onClick={toggleDraw} className={`editor-icon ${isDrawing ? 'active' : ''}`}>
+          <Image src={brushIcon} alt="enable brush" height={30} width={30}/>
+        </span>
+        <span onClick={increaseSize} className={`editor-icon `}>
+          <Image src={thickLine} alt="increaseSize" height={30} width={30}/>
+        </span>
+        <span onClick={decreaseSize} className={`editor-icon`}>
+          <Image src={thinLine} alt="decreaseSize" height={30} width={30}/>
+        </span>
+        <Divider type="vertical"/>
+        <span onClick={() => addBackground()} className={`editor-icon`}>
+          <Image src={backgroundIcon} alt="Change Background Color" height={30} width={30}/>
+        </span>
+        <ColorPicker
+          format="hex"
+          value={color}
+          onChange={(value) =>{
+            setColor('#'+value.toHex());
+          }}
+        />
+        <Divider type="vertical"/>
+        <input ref={inputRef} className="custom-file-input" type="file" accept="image/*" onChange={handleAddImage} />
+        <span onClick={addText} className={`editor-icon`}>
+          <Image src={textIcon} alt="addText" height={30} width={30}/>
+        </span>
+        <span onClick={clear} className={`editor-icon`}>
+          <Image src={clearIcon} alt="clearPage" height={30} width={30}/>
+        </span>
+        <span onClick={removeSelectedObject} className={`editor-icon`}>
+          <Image src={deleteIcon} alt="deletePage" height={30} width={30}/>
+        </span>
+        <Divider type="vertical"/>
+        {/* <Button onClick={exportSVG}>
           {" "}
           ToSVG
         </Button>
         <Button onClick={fromSvg}>
           fromsvg
-        </Button>
+        </Button> */}
       </section>
-      <FabricJSCanvas className={`canvas-page w-[1024px] h-[576px] my-10`} onReady={onReady} 
+      <FabricJSCanvas className={`canvas-page w-[889px] h-[500px] my-10`} onReady={onReady} 
         style={{"display": "inline-block"}}
       />
     </div>
