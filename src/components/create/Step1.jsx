@@ -34,7 +34,7 @@ function Step1({nextStep, topic, setTopic, message}) {
                 </span>
                  Choose Your Topic
             </div>
-            <div className='message-container mt-1rem text-center font-bold'>{'ERROR: ' + message}</div>
+            <div className='message-container mt-1rem text-center'>{'ERROR: ' + message}</div>
             <div className='step-input-container flex flex-col justify-center'>
                 <Input.TextArea rows={20} value={topic} onChange={(e) => setTopic(e.target.value)} placeholder= 'Type or paste (Ctrl+V) your text here or upload a document.'/>
             </div>
