@@ -13,7 +13,7 @@ function LoginPage({auth}) {
 	}
 	return (
 		<>
-			<Navbar></Navbar>
+			<Navbar />
 			<div className="login-form-wrapper flex flex-row-reverse">
 				<div className="bubble red">
 					<img src="/bubble1.svg" alt="decoration bubble" />

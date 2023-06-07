@@ -4,6 +4,8 @@ import CanvasPage from '@/components/CanvasPage'
 import { useEffect, useRef, useState } from 'react';
 import PptxGenJS from 'pptxgenjs';
 import { Button } from 'antd';
+import Navbar from '@/components/common/Navbar';
+import Footer from '@/components/common/Footer';
 
 export default function EditorPage() {
   const [canvasPages, setCanvasPages] = useState([1]);
@@ -57,8 +59,10 @@ export default function EditorPage() {
   }, [canvasPages]);
 
   return (
-    <div className='flex w-full h-[100vh]'>
-      <div className='bg-[#F9FBFD] h-full w-[300px] overflow-y-scroll overflow-x-hidden'>
+    <>
+      <Navbar />
+      <div className='flex w-full'>
+      <div className='bg-[#F9FBFD] h-[90vh] w-[300px] overflow-y-scroll overflow-x-hidden'>
         {canvasPages.map((pageId, index) => (
             <div 
               key={index}
@@ -72,19 +76,16 @@ export default function EditorPage() {
                 id={`preview-image-${index}`}
                 className='p-[2px] rounded-lg border-[3px] border-[gray] cursor-pointer'
                 src={""}
-                width={300}
-                height={300}
+                width={330}
+                height={150}
                 alt={`preview-image-${index}`}
                 onClick={() => setActivePage(pageId)}
               />
           </div>
         ))}
+        <Button type='danger' onClick={() => deletePage(activePage)} className='bg-red-600 text-white'>Delete Last Page</Button>
       </div>
       <div className='bg-[#F1F2F6] h-full w-full relative'>
-        <div className='bg-white h-[70px] flex editor flex-row-reverse items-center mr-5 '>
-          <Button onClick={addPage} className='bg'>Add Page</Button>
-          <Button onClick={downloadAllPages} className=''>Download All Pages</Button>
-        </div>
         <div className='canvas'>
           {canvasPages.map((pageId, index) => (
             <div 
@@ -93,12 +94,14 @@ export default function EditorPage() {
               className={`canvas-page ${activePage === pageId ? 'active' : 'hidden'}`}
               data-page-id={pageId}
             >
-              <CanvasPage />
-              <Button type='danger' onClick={() => deletePage(pageId)} className='bg-red-600 text-white'>Delete Last Page</Button>
+              <CanvasPage addPage={addPage} downloadAllPages={downloadAllPages}/>
             </div>
           ))}
         </div>
       </div>
-    </div>
+      </div>
+      <Footer />
+    </>
+    
   )
 }
