@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "@/hooks/auth";
 import AuthService from "@/services/AuthService";
+import Loading from "@/components/Loading";
 
 export default function AuthStateChanged({ children }) {
 	const { setUser } = useAuth();
@@ -15,7 +16,7 @@ export default function AuthStateChanged({ children }) {
 	}, []);
 
 	if (loading) {
-		return <h1>Loading...</h1>;
+		return <Loading></Loading>;
 	}
 
 	return children;
