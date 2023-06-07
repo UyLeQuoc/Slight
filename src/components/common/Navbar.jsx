@@ -8,7 +8,7 @@ const Navbar = () => {
   const [active, setActive] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const {user, logout} = useAuth();
+  const {user, logout, isPremium} = useAuth();
   const currentUser = user;
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Navbar = () => {
                   showMenu && (
                     <div className="options">
                       {
-                        currentUser?.isPremium && (
+                        isPremium && (
                           <>
                             <span>Modified</span>
                           </>

@@ -5,9 +5,8 @@ import {
 	signOut,
 	onAuthStateChanged,
 } from "firebase/auth";
-import { collection, doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "@/config/firebase.config";
-import { notification } from "antd";
 
 class AuthService {
 	constructor(firebaseApp) {

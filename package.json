@@ -19,14 +19,25 @@
     "fabricjs-react": "^1.2.0",
     "firebase": "^9.22.1",
     "framer-motion": "^10.12.16",
+    "i": "^0.3.7",
     "next": "13.4.3",
+    "npm": "^9.6.7",
+    "office-text-extractor": "^2.0.0",
     "postcss": "8.4.23",
     "pptxgenjs": "^3.12.0",
     "react": "18.2.0",
+    "react-admin": "^4.11.1",
+    "react-admin-firebase": "^4.1.2",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-firebaseui": "^6.0.0",
     "sass": "^1.62.1",
     "stripe": "^12.7.0",
     "tailwindcss": "3.3.2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
