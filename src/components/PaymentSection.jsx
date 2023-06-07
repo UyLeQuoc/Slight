@@ -9,6 +9,14 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
         setSelectedPaymentMethod(id);
     }
 
+    const ref = React.useRef(null);
+
+    React.useEffect(() => {
+      setTimeout( () => {
+      ref.current?.scrollIntoView();
+      }, 100);
+    },[]);
+
     const paymentList = [
         {
             id: 1,
@@ -60,6 +68,7 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
                 </div>
             </div>
         </div>
+       <div ref={ref}></div>
     </div>
   )
 }

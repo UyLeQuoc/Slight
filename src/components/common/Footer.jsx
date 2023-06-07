@@ -1,6 +1,8 @@
 import React from 'react'
 
 function Footer() {
+
+
   return (
     <div className='footer flex flex-col items-center'>
       <div className='content-container flex flex-row justify-between'>
@@ -22,7 +24,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className='copyright'>Copyright © 2023 Slight</div>
+      <div id='payment' className='copyright'>Copyright © 2023 Slight</div>
     </div>
   )
 }

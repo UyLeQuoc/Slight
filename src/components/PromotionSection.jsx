@@ -40,7 +40,7 @@ function PromotionSection() {
                 <div className='description'>
                     Perfect plan for students and educators
                 </div>
-                <Link href="/payment" className='getStartedBtn'>
+                <Link href="/payment#payment" className='getStartedBtn'>
                     Get Started
                 </Link>
                 <ul className='perks-container'>
