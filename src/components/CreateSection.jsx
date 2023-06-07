@@ -6,12 +6,22 @@ function CreateSection() {
   const [step, setStep] = useState(1);
   const [topic, setTopic] = useState('');
   const [numberOfSlides, setNumberOfSlides] = useState(5);
-  const [wordsPerSlide, setWordsPerSlide] = useState(20);
+  const [wordsPerSlide, setWordsPerSlide] = useState(50);
   const [isFetchLoading, setIsFetchLoading] = useState(false);
-  
+  const [submitBtnName, setSubmitBtnName] = useState('Submit'); 
+  const [message, setMessage] = useState('')
 
   const nextStep = () => {
+    if (topic.length <= 0){
+      setMessage("You must enter a topic.");
+      return;
+    }
+    if (topic.length > 150){
+      setMessage("Your topic is too long. The limit is 150 chracters or roughly 25 words.");
+      return;
+    }
     setStep(step + 1);
+  
   }
   const prevStep = () => {
     setStep(step - 1);
@@ -20,6 +30,7 @@ function CreateSection() {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setSubmitBtnName("Submitted");
     console.log("submitHandler", topic, numberOfSlides, wordsPerSlide);
     setIsFetchLoading(true);
     fetch('https://slight-gen-api.onrender.com/generate' + 
@@ -52,7 +63,7 @@ function CreateSection() {
   return (
     <div className='create-step-container'>
        {
-          step === 1 ? <Step1 nextStep={nextStep} topic={topic} setTopic={setTopic}/> : 
+          step === 1 ? <Step1 nextStep={nextStep} topic={topic} setTopic={setTopic} message={message}/> : 
           (
             <Step2 
               prevStep={prevStep} 
@@ -62,6 +73,7 @@ function CreateSection() {
               setWordsPerSlide={setWordsPerSlide}
               submitHandler={submitHandler}
               isFetchLoading={isFetchLoading}
+              submitBtnName={submitBtnName}
             ></Step2>
           )
        }
