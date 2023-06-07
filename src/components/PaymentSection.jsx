@@ -17,30 +17,36 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
       }, 100);
     },[]);
 
-    const paymentList = [
+    const generateRandomNumberString = () => Math.floor(Math.random() * 1e10).toString().padStart(10, '0');
+    
+    var paymentList = [
         {
             id: 1,
             logoUrl: '/vnpay.svg',
             qrcodeUrl: '/vnpay-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 2,
             logoUrl: '/momo.svg',
             qrcodeUrl: '/momo-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 3,
             logoUrl: '/zalopay.svg',
             qrcodeUrl: '/zalopay-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 4,
             logoUrl: '/mastercard-visa.svg',
             qrcodeUrl: '/mastercard-visa-qrcode.svg',
             active: false,
+            code: generateRandomNumberString(),
         },
     ]
 
