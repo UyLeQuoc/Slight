@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import useAuth from '@/hooks/auth';
 import PaymentInfo from './PaymentInfo';
 
 function PaymentSection({paymentHandler, isPaymentHandler, user}) {
@@ -16,8 +17,10 @@ function PaymentSection({paymentHandler, isPaymentHandler, user}) {
       ref.current?.scrollIntoView();
       }, 100);
     },[]);
+    const {user} = useAuth();
+    console.log(user);
+    const uidString = user?.uid.toString().slice(0, 6);
 
-    const generateRandomNumberString = () => Math.floor(Math.random() * 1e10).toString().padStart(10, '0');
     
     var paymentList = [
         {
@@ -25,28 +28,32 @@ function PaymentSection({paymentHandler, isPaymentHandler, user}) {
             logoUrl: '/vnpay.svg',
             qrcodeUrl: '/vnpay-qrcode.svg',
             active: true,
-            code: generateRandomNumberString(),
+
+            uidString: uidString,
         },
         {
             id: 2,
             logoUrl: '/momo.svg',
             qrcodeUrl: '/momo-qrcode.svg',
             active: true,
-            code: generateRandomNumberString(),
+
+            uidString: uidString,
+
         },
         {
             id: 3,
             logoUrl: '/zalopay.svg',
             qrcodeUrl: '/zalopay-qrcode.svg',
             active: true,
-            code: generateRandomNumberString(),
+
+            uidString: uidString,
+
         },
         {
             id: 4,
             logoUrl: '/mastercard-visa.svg',
             qrcodeUrl: '/mastercard-visa-qrcode.svg',
             active: false,
-            code: generateRandomNumberString(),
         },
     ]
 
