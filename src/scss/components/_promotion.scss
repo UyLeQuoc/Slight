@@ -41,6 +41,11 @@
                 text-align: center;
                 padding: 0.1rem;
                 margin: 1rem 0;
+
+                &.active{
+                    background-color: white;
+                    color: $color-blue-800;
+                }
             }
 
             .active {

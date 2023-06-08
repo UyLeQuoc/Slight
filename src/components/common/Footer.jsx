@@ -1,8 +1,6 @@
 import React from 'react'
 
 function Footer() {
-
-
   return (
     <div className='footer flex flex-col items-center'>
       <div className='content-container flex flex-row justify-between'>

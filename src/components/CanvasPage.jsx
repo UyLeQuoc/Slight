@@ -1,21 +1,18 @@
+import { ColorPicker, Divider, Tooltip } from "antd";
 import { fabric } from "fabric";
-import React, { useEffect, useState } from "react";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-import { Button, ColorPicker, Divider, Tooltip } from "antd";
-import {HighlightOutlined} from '@ant-design/icons';
-import undoIcon from '../../public/editor/undo.svg';
-import redoIcon from '../../public/editor/redo.svg';
+import React, { useEffect, useState } from "react";
+import pageIcon from '../../public/editor/add-page.svg';
 import brushIcon from '../../public/editor/brush.svg';
 import backgroundIcon from '../../public/editor/change-background-color.svg';
-import thickLine from '../../public/editor/thick-line.svg';
-import thinLine from '../../public/editor/thin-line.svg';
-import pageIcon from '../../public/editor/add-page.svg';
-import downloadIcon from '../../public/editor/download.svg';
-import textIcon from '../../public/editor/text-insert.svg';
 import clearIcon from '../../public/editor/clear-page.svg';
 import deleteIcon from '../../public/editor/delete.svg';
-import uploadImageIcon from '../../public/editor/upload-image.svg';
-import uploadSVGIcon from '../../public/editor/upload-svg.svg';
+import downloadIcon from '../../public/editor/download.svg';
+import redoIcon from '../../public/editor/redo.svg';
+import textIcon from '../../public/editor/text-insert.svg';
+import thickLine from '../../public/editor/thick-line.svg';
+import thinLine from '../../public/editor/thin-line.svg';
+import undoIcon from '../../public/editor/undo.svg';
 
 
 import Image from "next/image";

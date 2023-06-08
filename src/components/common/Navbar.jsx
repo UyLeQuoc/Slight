@@ -8,7 +8,7 @@ const Navbar = () => {
   const [active, setActive] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const {user, logout, isPremium} = useAuth();
+  const {user, logout, isPremium, getUserRole} = useAuth();
   const currentUser = user;
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const Navbar = () => {
         setActive(false);
       }
     };
+    getUserRole();
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -48,13 +49,19 @@ const Navbar = () => {
                   showMenu && (
                     <div className="options">
                       {
-                        isPremium && (
-                          <>
-                            <span>Modified</span>
-                          </>
+                        currentUser.isPremium && (
+                          <span className="flex items-stretch">
+                            <Link href={"/editor"}>Editor</Link>
+                            <div class="music-waves mb-1 ml-2">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                          </span>
                         )
                       }
-                      <span>View All Slides</span>
                       <span onClick={() => logout()}>Logout</span>
                     </div>
                   )

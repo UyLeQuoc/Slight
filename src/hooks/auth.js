@@ -32,6 +32,7 @@ export function AuthProvider(props) {
 
   const getUserRole = async () => {
     const isPremium = await AuthService.getUserRole();
+    if(isPremium === null) return null;
     setUser({
       ...user,
       isPremium: isPremium,

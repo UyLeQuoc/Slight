@@ -33,12 +33,7 @@ function CreateSection() {
     setSubmitBtnName("Submitted");
     console.log("submitHandler", topic, numberOfSlides, wordsPerSlide);
     setIsFetchLoading(true);
-    fetch('https://slight-gen-api.onrender.com/generate' + 
-    '?topic=' + topic +
-    '&mode=0' +
-    '&n_slides=' + numberOfSlides +
-    '&n_words_per_slide=' + wordsPerSlide
-    , {
+    fetch('https://slight-gen-api.onrender.com/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +42,8 @@ function CreateSection() {
         topic: topic,
         mode: 0,
         n_slides: numberOfSlides,
-        n_words_per_slide: wordsPerSlide
+        n_words_per_slide: wordsPerSlide,
+        api_token: '2YHoC7gp9rgEwzbwJyd_hg%3D%3D'
       })
     })
     .then(res => res.blob())
