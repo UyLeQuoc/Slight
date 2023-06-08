@@ -1,8 +1,15 @@
+import useAuth from '@/hooks/auth';
 import Reveal from '@/layout/Reveal'
 import Link from 'next/link'
-import React from 'react'
+import { useEffect } from 'react'
 
 function PromotionSection() {
+    const {user, getUserRole} = useAuth();
+    useEffect(() => {
+        getUserRole();
+    },[])
+
+
   return (
     <Reveal>
     <div className='promotion-container'>
@@ -40,9 +47,16 @@ function PromotionSection() {
                 <div className='description'>
                     Perfect plan for students and educators
                 </div>
-                <Link href="/payment#payment" className='getStartedBtn'>
-                    Get Started
+                {user?.isPremium ?
+                (<Link href="/editor" className='getStartedBtn active'>
+                    You are here! Go to Editor?
                 </Link>
+                    ) : (
+                    <Link href="/payment#payment" className='getStartedBtn'>
+                        Get Started
+                    </Link>
+                )}
+                
                 <ul className='perks-container'>
                     <li>
                         10 Presentaions / month

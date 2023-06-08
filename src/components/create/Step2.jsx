@@ -1,59 +1,7 @@
 import React from 'react'
-import TextQuestion from './Step2Question/TextQuestion'
-import ImgQuestion from './Step2Question/ImgQuestion'
-import { Button, ConfigProvider, Input, Tooltip } from 'antd'
+import { Button, ConfigProvider, Input } from 'antd'
 
 function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumberOfSlides, wordsPerSlide, setWordsPerSlide, submitBtnName}) {
-  const questionnaire = [
-    {
-      questionId : 0,
-      type: 'text',
-      question: 'Text Question',
-      options: [
-        {
-          optionId : 0,
-          content: 'First Option',
-        },
-        {
-          optionId : 1,
-          content: 'Second Option',
-        },{
-          optionId : 2,
-          content: 'Third Option',
-        },{
-          optionId : 3,
-          content: 'Fourth Option',
-        },
-      ],
-    },
-    {
-      questionId : 1,
-      type: 'img',
-      question: 'Img Question',
-      options: [
-        {
-          optionId : 0,
-          imgUrl: '/create-option-img-placeholder.svg',
-          content: 'First Option',
-        },
-        {
-          optionId : 1,
-          imgUrl: '/create-option-img-placeholder.svg',
-          content: 'Second Option',
-        },{
-          optionId : 2,
-          imgUrl: '/create-option-img-placeholder.svg',
-          content: 'Third Option',
-        },{
-          optionId : 3,
-          imgUrl: '/create-option-img-placeholder.svg',
-          content: 'Fourth Option',
-        },
-      ],
-    },
-  ]
-
-
   return (
     <div className='flex flex-row justify-center'>
         <div className='step-2-container w-[80vw] flex flex-col justify-evenly'>
@@ -76,7 +24,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
               <div className='step-input-title'>Words Per Slide</div>
               <Input 
                 type="number"
-                min={20}
+                min={50}
                 placeholder='Words Per Slide'
                 value={wordsPerSlide}
                 onChange={(e) => setWordsPerSlide(e.target.value)}
@@ -106,7 +54,6 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
                 <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' onClick={submitHandler}>{submitBtnName}</Button>
               </ConfigProvider>
             </div>
-
         </div>
     </div>
   )
