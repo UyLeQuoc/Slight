@@ -49,6 +49,7 @@ class AuthService {
 		})
 	}
 	getUserRole() {
+		if(!this.auth.currentUser) return null;
 		return getDoc(doc(this.db, "users", this.auth.currentUser.uid)).then((doc) => {
 			if (doc.exists()) {
 				return doc.data().isPremium;

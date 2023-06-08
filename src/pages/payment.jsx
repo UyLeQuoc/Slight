@@ -2,7 +2,7 @@ import Footer from '@/components/common/Footer'
 import Navbar from '@/components/common/Navbar'
 import PromotionSection from '@/components/PromotionSection'
 import PaymentSection from '@/components/PaymentSection'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { Button, notification } from 'antd'
 import useAuth from '@/hooks/auth'
@@ -10,7 +10,8 @@ import useAuth from '@/hooks/auth'
 function Payment() {
   const stripe = useStripe();
   const elements = useElements();
-  const {user} = useAuth();
+  const {user, getUserRole} = useAuth();
+  const [currentUser, setCurrentUser] = React.useState(user);
   const [isPaymentHandler, setIsPaymentHandler] = React.useState(false);
   const { updateUserToPremium } = useAuth();
 
@@ -59,16 +60,24 @@ function Payment() {
           description: 'Payment success'
         })
         updateUserToPremium();
+        setCurrentUser({
+          ...currentUser,
+          isPremium: true
+        });
       }
     }
     setIsPaymentHandler(false);
   }
 
+  useEffect(() => {
+    getUserRole();
+  },[])
+
   return (
     <>
       <Navbar />
       <PromotionSection />
-      <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}/>
+      <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler} user={currentUser}/>
       <Footer/>
     </>
 
