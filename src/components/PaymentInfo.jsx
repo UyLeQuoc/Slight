@@ -2,7 +2,9 @@ import { CardElement } from '@stripe/react-stripe-js'
 import { Button } from 'antd'
 import React from 'react'
 
+
 function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active, uidString}, paymentHandler, isPaymentHandler}) {
+
   
     return (
     <div className='payment-method-container flex flex-row w-[100%] h-[100%] selected-payment-content py-[2rem]' key={'_' + id}>

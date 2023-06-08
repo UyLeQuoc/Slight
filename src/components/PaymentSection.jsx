@@ -21,6 +21,7 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
     const {user} = useAuth();
     console.log(user);
     const uidString = user?.uid.toString().slice(0, 6);
+
     
     var paymentList = [
         {
@@ -28,6 +29,7 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
             logoUrl: '/vnpay.svg',
             qrcodeUrl: '/vnpay-qrcode.svg',
             active: true,
+
             uidString: uidString,
         },
         {
@@ -35,14 +37,18 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
             logoUrl: '/momo.svg',
             qrcodeUrl: '/momo-qrcode.svg',
             active: true,
+
             uidString: uidString,
+
         },
         {
             id: 3,
             logoUrl: '/zalopay.svg',
             qrcodeUrl: '/zalopay-qrcode.svg',
             active: true,
+
             uidString: uidString,
+
         },
         {
             id: 4,
