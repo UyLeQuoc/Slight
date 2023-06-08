@@ -2,8 +2,9 @@ import { CardElement } from '@stripe/react-stripe-js'
 import { Button } from 'antd'
 import React from 'react'
 
-function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active}, paymentHandler, isPaymentHandler}) {
-  return (
+function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active, code}, paymentHandler, isPaymentHandler}) {
+  
+    return (
     <div className='payment-method-container flex flex-row w-[100%] h-[100%] selected-payment-content py-[2rem]' key={'_' + id}>
         {active && (<>
             <div className='payment-method-qr-code w-[40%] pl-[1rem]'>
@@ -15,7 +16,7 @@ function PaymentInfo({paymentInfo: {id, logoUrl, qrcodeUrl, active}, paymentHand
                         <span>Số tiền: </span><span className='text-red-600'>199.000VND</span>
                     </div>
                     <div className='payment-method-info-title-code'>
-                        <span>Mã thanh toán của bạn là: </span><span className='font-light'>00000001</span>
+                        <span>Mã thanh toán của bạn là: </span><span className='font-light'>{code}</span>
                     </div>
                     <div className='payment-method-info-title-syntax'>
                         <span>Cú pháp: </span><span className='font-light'>Mã thanh toán - PREMIUM - SLIGHT</span>

@@ -3,7 +3,7 @@ import TextQuestion from './Step2Question/TextQuestion'
 import ImgQuestion from './Step2Question/ImgQuestion'
 import { Button, ConfigProvider, Input, Tooltip } from 'antd'
 
-function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumberOfSlides, wordsPerSlide, setWordsPerSlide}) {
+function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumberOfSlides, wordsPerSlide, setWordsPerSlide, submitBtnName}) {
   const questionnaire = [
     {
       questionId : 0,
@@ -82,6 +82,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
                 onChange={(e) => setWordsPerSlide(e.target.value)}
               />
             </div>
+
             <div className='step-button-container flex flex-row justify-center items-center'>
               <ConfigProvider
                   theme={{
@@ -93,8 +94,31 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
                 <Button size='large' className='next-step-button cursor-pointer mr-5' onClick={prevStep}>Previous Step</Button>
                 <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' loading={isFetchLoading} onClick={submitHandler}>Submit</Button>
               </ConfigProvider>
-              
+            {isFetchLoading && 
+            <div className="loading-animation-contianer my-[1rem]">
+              <div className="follow-the-leader">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className='loading-text-container text-center'>Generating...</div>
             </div>
+            }
+            <div className='step-button-container flex flex-row justify-center items-center'>
+              <ConfigProvider
+                  theme={{
+                    token: {
+                      colorPrimary: '#e52991',
+                    },
+                  }}
+                >
+                <Button size='large' className='next-step-button cursor-pointer mr-5' onClick={prevStep}>Previous Step</Button>
+                <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' onClick={submitHandler}>{submitBtnName}</Button>
+              </ConfigProvider>
+            </div>
+
         </div>
     </div>
   )

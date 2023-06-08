@@ -9,30 +9,44 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
         setSelectedPaymentMethod(id);
     }
 
-    const paymentList = [
+    const ref = React.useRef(null);
+
+    React.useEffect(() => {
+      setTimeout( () => {
+      ref.current?.scrollIntoView();
+      }, 100);
+    },[]);
+
+    const generateRandomNumberString = () => Math.floor(Math.random() * 1e10).toString().padStart(10, '0');
+    
+    var paymentList = [
         {
             id: 1,
             logoUrl: '/vnpay.svg',
             qrcodeUrl: '/vnpay-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 2,
             logoUrl: '/momo.svg',
             qrcodeUrl: '/momo-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 3,
             logoUrl: '/zalopay.svg',
             qrcodeUrl: '/zalopay-qrcode.svg',
             active: true,
+            code: generateRandomNumberString(),
         },
         {
             id: 4,
             logoUrl: '/mastercard-visa.svg',
             qrcodeUrl: '/mastercard-visa-qrcode.svg',
             active: false,
+            code: generateRandomNumberString(),
         },
     ]
 
@@ -60,6 +74,7 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
                 </div>
             </div>
         </div>
+       <div ref={ref}></div>
     </div>
   )
 }

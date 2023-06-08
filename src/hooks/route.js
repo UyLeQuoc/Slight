@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import useAuth from "./auth";
+import Loading from "@/components/Loading";
 
 export function withPublic(Component) {
 	return function WithPublic(props) {
@@ -9,7 +10,7 @@ export function withPublic(Component) {
 
 		if (auth.user) {
 			router.replace("/");
-			return <h1>Loading...</h1>;
+			return <Loading></Loading>;
 		}
 		return <Component auth={auth} {...props} />;
 	};
@@ -22,7 +23,7 @@ export function withPremium(Component) {
 		
 		if (!auth.user) {
 			router.replace("/login");
-			return <h1>Loading...</h1>;
+			return <Loading></Loading>;
 		}
 		auth.getUserRole()
 		if (auth.user.isPremium === false) {
@@ -39,7 +40,7 @@ export function withProtected(Component) {
 
 		if (!auth.user) {
 			router.replace("/login");
-			return <h1>Loading...</h1>;
+			return <Loading></Loading>;
 		}
 		return <Component auth={auth} {...props} />;
 	};

@@ -14,6 +14,8 @@ function Payment() {
   const [isPaymentHandler, setIsPaymentHandler] = React.useState(false);
   const { updateUserToPremium } = useAuth();
 
+
+  
   const paymentHandler = async (e) => {
     e.preventDefault();
     if(!stripe || !elements) {
@@ -67,7 +69,7 @@ function Payment() {
       <Navbar />
       <PromotionSection />
       <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}/>
-      <Footer />
+      <Footer/>
     </>
 
   )

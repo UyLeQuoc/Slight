@@ -5,6 +5,7 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PromotionSection from '@/components/PromotionSection';
 import Link from 'next/link';
+import Loading from '@/components/Loading';
 
 function LoginPage({auth}) {
   const { user, loginWithGoogle, error } = auth;
