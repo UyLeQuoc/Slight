@@ -17,8 +17,6 @@ function PaymentSection({paymentHandler, isPaymentHandler, user}) {
       ref.current?.scrollIntoView();
       }, 100);
     },[]);
-    const {user} = useAuth();
-    console.log(user);
     const uidString = user?.uid.toString().slice(0, 6);
 
     

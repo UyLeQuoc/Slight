@@ -1,11 +1,11 @@
+import PaymentSection from '@/components/PaymentSection'
+import PromotionSection from '@/components/PromotionSection'
 import Footer from '@/components/common/Footer'
 import Navbar from '@/components/common/Navbar'
-import PromotionSection from '@/components/PromotionSection'
-import PaymentSection from '@/components/PaymentSection'
-import React, { useEffect } from 'react'
-import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { Button, notification } from 'antd'
 import useAuth from '@/hooks/auth'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { notification } from 'antd'
+import React, { useEffect } from 'react'
 
 function Payment() {
   const stripe = useStripe();
