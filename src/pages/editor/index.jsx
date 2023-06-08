@@ -19,6 +19,7 @@ export default function EditorPage() {
   };
 
   const deletePage = (pageId) => {
+    if(canvasPages.length === 1) return;
     const updatedPages = canvasPages.filter((pId) => (pId != pageId));
     EditorRefs.current = EditorRefs.current.filter((ref) => (ref != null));
     setCanvasPages(updatedPages);
@@ -62,7 +63,7 @@ export default function EditorPage() {
     <>
       <Navbar />
       <div className='flex w-full'>
-      <div className='bg-[#F9FBFD] h-[90vh] w-[300px] overflow-y-scroll overflow-x-hidden'>
+      <div className='bg-[#F9FBFD] h-[90vh] w-[300px] overflow-y-scroll overflow-x-hidden flex flex-col items-center justify-start py-5'>
         {canvasPages.map((pageId, index) => (
             <div 
               key={index}

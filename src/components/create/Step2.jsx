@@ -76,7 +76,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
               <div className='step-input-title'>Words Per Slide</div>
               <Input 
                 type="number"
-                min={20}
+                min={50}
                 placeholder='Words Per Slide'
                 value={wordsPerSlide}
                 onChange={(e) => setWordsPerSlide(e.target.value)}
