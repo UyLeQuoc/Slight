@@ -76,8 +76,8 @@ function Payment() {
   return (
     <>
       <Navbar />
+      <PromotionSection></PromotionSection>
       <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler} user={currentUser}/>
-      <Footer/>
       <Footer />
     </>
 
