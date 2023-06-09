@@ -58,7 +58,6 @@ function CreateSection() {
       return;
     }
     setStep(step + 1);
-  
   }
 
   const prevStep = () => {
