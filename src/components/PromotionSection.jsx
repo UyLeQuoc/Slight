@@ -12,22 +12,37 @@ function PromotionSection() {
 
   return (
     <Reveal>
-    <div className='promotion-container'>
-        <div className='title'>PROMOTIONS</div>
+<div className='promotion-container'>
+        <div className='title'>YOUR ACCOUNT PLAN</div>
         <div className='plans flex flex-row justify-center'>
             <div className='plan-container flex flex-col'>
-                <div className='price'>
-                    FREE
+                <div className='price flex flex-row items-center'>
+                    Basic
+                    {
+                        !user?.isPremium ? (
+                            <span className='current-plan font-thin w-fit ml-[1rem] mt-[0.5rem]'>
+                            Current plan
+                            </span>
+                        ) : (<></>)
+                    }
+
                 </div>
                 <div className='plan-title'>
-                    Basic
+                    FREE
                 </div>
                 <div className='description'>
                     Good enough to get started
                 </div>
-                <Link href="/login" className='getStartedBtn'>
+                
+                {user?.isPremium ?
+                (<Link href="/login" className='getStartedBtn w-fit'>
                     Get Started
                 </Link>
+                    ) : (
+                    <Link href="/login" className='getStartedBtn w-fit'>
+                      Get Started
+                    </Link>
+                )}
                 <ul className='perks-container'>
                     <li>
                         3 Presentaions / month
@@ -36,24 +51,32 @@ function PromotionSection() {
                         2500 Characters Input / Presentaions
                     </li>
                 </ul>
+
             </div>
             <div className='plan-container flex flex-col'>
-            <div className='price'>
-                    199.000VND / month
+            <div className='price flex flex-row items-center'>
+                    Premium
+                    {
+                        user?.isPremium ? (
+                            <span className='current-plan font-thin w-fit ml-[1rem] mt-[0.5rem]'>
+                            Current plan
+                            </span>
+                        ) : (<></>)
+                    }
                 </div>
                 <div className='plan-title'>
-                    Premium
+                    199.000VND/month
                 </div>
                 <div className='description'>
                     Perfect plan for students and educators
                 </div>
                 {user?.isPremium ?
-                (<Link href="/editor" className='getStartedBtn active'>
-                    You are here! Go to Editor?
+                (<Link href="/editor" className='getStartedBtn w-fit active'>
+                    Try out Editor?
                 </Link>
                     ) : (
-                    <Link href="/payment#payment" className='getStartedBtn'>
-                        Get Started
+                    <Link href="/payment#payment" className='getStartedBtn w-fit'>
+                        Upgrade
                     </Link>
                 )}
                 
@@ -65,13 +88,14 @@ function PromotionSection() {
                         6000 Characters Input / Presentaions
                     </li>
                     <li>
-                        Document Upload
+                        Presentation Editing Feature
                     </li>
                 </ul>
             </div>
         </div>
         <div id='about' className='self-end mb-[1rem]'></div>
     </div>
+
     </Reveal>
   )
 }

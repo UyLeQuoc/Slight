@@ -13,19 +13,6 @@ function Footer() {
         <div className='aboutUs-container'>
           <div className='title'>ABOUT US</div>
           <div className='aboutUs-description'> This project is brought to life because of its need for speakers in general and students in specific, which make their lives easier by saving them hundreds of hours making, and modifying their presentation. </div>
-          {/* <div className='flex flex-row justify-evenly'>
-            <div className='w-[30%] px-[1rem] pt-2'>
-            <Link href={'/appstore'}>
-              <img src='/download-on-the-app-store.svg' alt='app-store-download-link'></img>
-            </Link>
-            </div>
-            <div className='w-[36%] px-[1rem]'>
-            <Link href={'/googleplaystore'}>
-            <img src='/google-play-badge.png' alt='google-play-store-download-link'></img>
-
-            </Link>
-            </div>
-          </div> */}
         </div>
         <div className='contact-container flex flex-col justify-evenly'>
           <div className='title'>CONTACT</div>

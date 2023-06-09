@@ -37,9 +37,8 @@
             .getStartedBtn {
                 border: 0.2rem solid white;
                 border-radius: 1.5rem;
-                width: 50%;
                 text-align: center;
-                padding: 0.1rem;
+                padding: 0.1rem 1rem;
                 margin: 1rem 0;
 
                 &.active{
@@ -56,6 +55,15 @@
             ul {
                 list-style-type: disc;
                 margin-left: 1rem;
+            }
+
+
+            .current-plan {
+                background-color: $color-pink-600;
+                padding: 0.3rem 0.5rem;
+                border-radius: 0.5rem;
+                font-size: 0.9rem;
+                font-style: italic;
             }
         }
 
