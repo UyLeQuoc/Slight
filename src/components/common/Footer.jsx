@@ -17,7 +17,7 @@ function Footer() {
         <div className='contact-container flex flex-col justify-evenly'>
           <div className='title'>CONTACT</div>
           <div className='contact-phonenumber'>Phone number: 0372644555</div>
-          <div className='contact-mail'>Mail: Slightteamcom@gmail.com</div>
+          <div className='contact-mail'>Mail: admin@slight.ai</div>
           <div className='contact-socials flex flex-row content-center'>
             <div className='contact-socials-title'>Social: </div>
             <a href='https://www.facebook.com/Slightgeneration'><img src='/footer-social-facebook.svg'></img></a>
