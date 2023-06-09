@@ -36,6 +36,7 @@ function CreateSection() {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
