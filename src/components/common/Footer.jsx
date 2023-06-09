@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Footer() {
@@ -12,6 +13,19 @@ function Footer() {
         <div className='aboutUs-container'>
           <div className='title'>ABOUT US</div>
           <div className='aboutUs-description'> This project is brought to life because of its need for speakers in general and students in specific, which make their lives easier by saving them hundreds of hours making, and modifying their presentation. </div>
+          {/* <div className='flex flex-row justify-evenly'>
+            <div className='w-[30%] px-[1rem] pt-2'>
+            <Link href={'/appstore'}>
+              <img src='/download-on-the-app-store.svg' alt='app-store-download-link'></img>
+            </Link>
+            </div>
+            <div className='w-[36%] px-[1rem]'>
+            <Link href={'/googleplaystore'}>
+            <img src='/google-play-badge.png' alt='google-play-store-download-link'></img>
+
+            </Link>
+            </div>
+          </div> */}
         </div>
         <div className='contact-container flex flex-col justify-evenly'>
           <div className='title'>CONTACT</div>
@@ -19,9 +33,15 @@ function Footer() {
           <div className='contact-mail'>Mail: Slightteamcom@gmail.com</div>
           <div className='contact-socials flex flex-row content-center'>
             <div className='contact-socials-title'>Social: </div>
-            <img src='/footer-social-facebook.svg'></img>
+            <a href='https://www.facebook.com/Slightgeneration'><img src='/footer-social-facebook.svg'></img></a>
+            <a href='https://www.instagram.com/slight.2023/'>
             <img src='/footer-social-instagram.svg'></img>
+            </a>
+            
           </div>
+        </div>
+        <div className='app-qrcode-container w-[10%]'>
+          <img className='app-qrcode' src='/app-qrcode.png' alt='app-download'></img>
         </div>
       </div>
       <div id='payment' className='copyright'>Copyright © 2023 Slight</div>
