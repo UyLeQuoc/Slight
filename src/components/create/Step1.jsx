@@ -6,6 +6,8 @@ function Step1({nextStep, topic, setTopic, message}) {
         <div className='step-1-container w-[80vw] flex flex-col justify-evenly'>
             <div className='step-title '>STEP 1</div>
             <div className='step-tips text-lg'>
+            Enter your topic, a detailed description of 10-15 words will be perfect.  
+        Don't have a topic? Try one of these: 'Albert Enstein', 'Cristiano Ronaldo' 
                 <span className='font-bold mr-2'>
                 Tips:  
                 </span>

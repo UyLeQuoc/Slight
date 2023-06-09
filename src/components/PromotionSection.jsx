@@ -48,7 +48,7 @@ function PromotionSection() {
                         3 Presentaions / month
                     </li>
                     <li>
-                        2500 Characters Input / Presentaions
+                        2500 Characters Input / Presentations
                     </li>
                 </ul>
 
@@ -85,7 +85,7 @@ function PromotionSection() {
                         10 Presentaions / month
                     </li>
                     <li>
-                        6000 Characters Input / Presentaions
+                        6000 Characters Input / Presentations
                     </li>
                     <li>
                         Presentation Editing Feature

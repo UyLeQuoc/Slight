@@ -52,6 +52,7 @@ function CreateSection() {
       a.href = window.URL.createObjectURL(data);
       a.download = topic + '.pptx';
       a.click();
+      
       setIsFetchLoading(false);
     });
   }
