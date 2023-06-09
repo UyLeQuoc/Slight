@@ -8,10 +8,6 @@ function Step1({nextStep, topic, setTopic, message}) {
             <div className='step-tips text-lg'>
             Enter your topic, a detailed description of 10-15 words will be perfect.  
         Don't have a topic? Try one of these: 'Albert Enstein', 'Cristiano Ronaldo' 
-                <span className='font-bold mr-2'>
-                Tips:  
-                </span>
-                 Choose Your Topic
             </div>
             {message && <div className='message-container mt-1rem text-center'>{'ERROR: ' + message}</div>}
             <div className='step-input-container flex flex-col justify-center'>
