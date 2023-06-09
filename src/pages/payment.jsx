@@ -1,21 +1,22 @@
+import PaymentSection from '@/components/PaymentSection'
+import PromotionSection from '@/components/PromotionSection'
 import Footer from '@/components/common/Footer'
 import Navbar from '@/components/common/Navbar'
-import PromotionSection from '@/components/PromotionSection'
-import PaymentSection from '@/components/PaymentSection'
-import React from 'react'
-import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { Button, notification } from 'antd'
 import useAuth from '@/hooks/auth'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { notification } from 'antd'
+import React, { useEffect } from 'react'
 
 function Payment() {
   const stripe = useStripe();
   const elements = useElements();
-  const {user} = useAuth();
+  const {user, getUserRole} = useAuth();
+  const [currentUser, setCurrentUser] = React.useState(user);
   const [isPaymentHandler, setIsPaymentHandler] = React.useState(false);
   const { updateUserToPremium } = useAuth();
 
-
   
+
   const paymentHandler = async (e) => {
     e.preventDefault();
     if(!stripe || !elements) {
@@ -58,18 +59,26 @@ function Payment() {
           message: 'Thanh toán thành công',
           description: 'Payment success'
         })
+        setCurrentUser({
+          ...currentUser,
+          isPremium: true
+        });
         updateUserToPremium();
       }
     }
     setIsPaymentHandler(false);
   }
+  useEffect(() => {
+    getUserRole();
+  },[])
+
 
   return (
     <>
       <Navbar />
-      <PromotionSection />
-      <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}/>
+      <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler} user={currentUser}/>
       <Footer/>
+      <Footer />
     </>
 
   )

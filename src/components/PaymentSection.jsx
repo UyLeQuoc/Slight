@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
+import useAuth from '@/hooks/auth';
 import PaymentInfo from './PaymentInfo';
 
-function PaymentSection({paymentHandler, isPaymentHandler}) {
+function PaymentSection({paymentHandler, isPaymentHandler, user}) {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(1);
 
     const handlePaymentMethodChange = (id) => {
@@ -16,25 +17,35 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
       ref.current?.scrollIntoView();
       }, 100);
     },[]);
+    const uidString = user?.uid.toString().slice(0, 6);
 
-    const paymentList = [
+    
+    var paymentList = [
         {
             id: 1,
             logoUrl: '/vnpay.svg',
             qrcodeUrl: '/vnpay-qrcode.svg',
             active: true,
+
+            uidString: uidString,
         },
         {
             id: 2,
             logoUrl: '/momo.svg',
             qrcodeUrl: '/momo-qrcode.svg',
             active: true,
+
+            uidString: uidString,
+
         },
         {
             id: 3,
             logoUrl: '/zalopay.svg',
             qrcodeUrl: '/zalopay-qrcode.svg',
             active: true,
+
+            uidString: uidString,
+
         },
         {
             id: 4,
@@ -56,15 +67,23 @@ function PaymentSection({paymentHandler, isPaymentHandler}) {
                     <img className='payment-graphic' src='/payment-graphic.svg' alt='payment graphic' />
                 </div>
                 <div className='payment-methods w-[45vw] flex flex-col'>
-                    <div className='payment-methods-list w-[100%] flex flex-row justify-between'>
-                        {paymentList.map((payment) => 
-                            (<div className={payment.id == selectedPaymentMethod ? 'payment-method-logo-container selected-payment-icon':'payment-method-logo-container'} 
-                                    key={payment.id}>
-                                <img className='payment-method-logo' id={payment.id}  onClick={e => handlePaymentMethodChange(e.target.id)}  src={payment.logoUrl} alt='payment method logo' />
-                            </div>)
-                        )}
-                    </div>
-                    <PaymentInfo paymentInfo={paymentList.at(selectedPaymentMethod-1)} paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}></PaymentInfo>
+                    {
+                        user?.isPremium ? (
+                            <h1>Success</h1>
+                        ):
+                    (
+                    <>
+                        <div className='payment-methods-list w-[100%] flex flex-row justify-between'>
+                            {paymentList.map((payment) => 
+                                (<div className={payment.id == selectedPaymentMethod ? 'payment-method-logo-container selected-payment-icon':'payment-method-logo-container'} 
+                                        key={payment.id}>
+                                    <img className='payment-method-logo' id={payment.id}  onClick={e => handlePaymentMethodChange(e.target.id)}  src={payment.logoUrl} alt='payment method logo' />
+                                </div>)
+                            )}
+                        </div>
+                        <PaymentInfo paymentInfo={paymentList.at(selectedPaymentMethod-1)} paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler}></PaymentInfo>
+                    </>
+                    )}
                 </div>
             </div>
         </div>
