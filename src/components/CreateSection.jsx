@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import Step1 from './create/Step1';
 import Step2 from './create/Step2';
+import { Button, Modal } from 'antd';
+
+
 function CreateSection() {
   const [step, setStep] = useState(1);
   const [topic, setTopic] = useState('');
@@ -10,6 +13,39 @@ function CreateSection() {
   const [isFetchLoading, setIsFetchLoading] = useState(false);
   const [submitBtnName, setSubmitBtnName] = useState('Submit'); 
   const [message, setMessage] = useState('')
+
+  const [modal, contextHolder] = Modal.useModal();
+  const countDown = () => {
+    let secondsToGo = 5;
+    const instance = modal.success({
+      title: 'Slide generated successfully',
+      content: `Your will be download automatically. This popup will close after ${secondsToGo} second.`,
+      okType: 'default',
+    });
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      instance.update({
+        content: `This modal will be destroyed after ${secondsToGo} second.`,
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(timer);
+      instance.destroy();
+    }, secondsToGo * 1000);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+
+  };
 
   const nextStep = () => {
     if (topic.length <= 0){
@@ -23,13 +59,13 @@ function CreateSection() {
     setStep(step + 1);
   
   }
+
   const prevStep = () => {
     setStep(step - 1);
   }
-  console.log('isLoading', isFetchLoading)
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     setSubmitBtnName("Submitted");
     console.log("submitHandler", topic, numberOfSlides, wordsPerSlide);
     setIsFetchLoading(true);
@@ -52,8 +88,15 @@ function CreateSection() {
       a.href = window.URL.createObjectURL(data);
       a.download = topic + '.pptx';
       a.click();
-      
+      countDown();
       setIsFetchLoading(false);
+      setSubmitBtnName('Submit');
+    })
+    .catch(err => {
+      console.log(err);
+      showModal();
+      setIsFetchLoading(false);
+      setSubmitBtnName('Submit');
     });
   }
 
@@ -72,8 +115,22 @@ function CreateSection() {
               isFetchLoading={isFetchLoading}
               submitBtnName={submitBtnName}
             ></Step2>
+            
           )
+          
        }
+       <Modal title="Generation failed" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+       footer={
+        [
+          <Button onClick={handleCancel}>Cancel</Button>,
+          <Button style={{backgroundColor: '#e52991', color: '#fff'}} onClick={handleOk}>OK</Button>
+        ]
+       }
+       >
+        <p>There was an error with your request.</p> 
+        <p>Please check your internet connection and try to stick to our recommended number of slides and words and then try again.</p>
+      </Modal>
+       {contextHolder}
     </div>
   )
 }
