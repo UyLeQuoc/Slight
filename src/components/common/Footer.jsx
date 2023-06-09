@@ -1,6 +1,9 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Footer() {
+
+
   return (
     <div className='footer flex flex-col items-center'>
       <div className='content-container flex flex-row justify-between'>
@@ -17,9 +20,15 @@ function Footer() {
           <div className='contact-mail'>Mail: Slightteamcom@gmail.com</div>
           <div className='contact-socials flex flex-row content-center'>
             <div className='contact-socials-title'>Social: </div>
-            <img src='/footer-social-facebook.svg'></img>
+            <a href='https://www.facebook.com/Slightgeneration'><img src='/footer-social-facebook.svg'></img></a>
+            <a href='https://www.instagram.com/slight.2023/'>
             <img src='/footer-social-instagram.svg'></img>
+            </a>
+            
           </div>
+        </div>
+        <div className='app-qrcode-container w-[10%]'>
+          <img className='app-qrcode' src='/app-qrcode.png' alt='app-download'></img>
         </div>
       </div>
       <div id='payment' className='copyright'>Copyright © 2023 Slight</div>

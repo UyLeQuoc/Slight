@@ -69,7 +69,10 @@ function PaymentSection({paymentHandler, isPaymentHandler, user}) {
                 <div className='payment-methods w-[45vw] flex flex-col'>
                     {
                         user?.isPremium ? (
-                            <h1>Success</h1>
+                            <div className='payment-success w-[100%] h-[100%] flex flex-col justify-center items-center'>
+                                <img className='payment-sucess-graphic' src='/payment-sucess-checkmark-icon.svg' alt='payment-sucess-graphic' />
+                                <div className='payment-sucess-title'>SUCCESS</div>
+                            </div>
                         ):
                     (
                     <>

@@ -7,8 +7,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
         <div className='step-2-container w-[80vw] flex flex-col justify-evenly'>
             <div className='step-title '>STEP 2</div>
             <div className='step-tips'>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
+            Adjust length of the slides. You can leave it as our recommendations and click Submit.            </div>
             <div className='step-input-container flex flex-col'>
               <div className='step-input-title'>Number Of Slides</div>
               <Input 

@@ -15,8 +15,8 @@ function Payment() {
   const [isPaymentHandler, setIsPaymentHandler] = React.useState(false);
   const { updateUserToPremium } = useAuth();
 
-
   
+
   const paymentHandler = async (e) => {
     e.preventDefault();
     if(!stripe || !elements) {
@@ -59,26 +59,26 @@ function Payment() {
           message: 'Thanh toán thành công',
           description: 'Payment success'
         })
-        updateUserToPremium();
         setCurrentUser({
           ...currentUser,
           isPremium: true
         });
+        updateUserToPremium();
       }
     }
     setIsPaymentHandler(false);
   }
-
   useEffect(() => {
     getUserRole();
   },[])
 
+
   return (
     <>
       <Navbar />
-      <PromotionSection />
+      <PromotionSection></PromotionSection>
       <PaymentSection paymentHandler={paymentHandler} isPaymentHandler={isPaymentHandler} user={currentUser}/>
-      <Footer/>
+      <Footer />
     </>
 
   )
