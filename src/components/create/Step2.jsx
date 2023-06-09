@@ -38,7 +38,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
                   <div></div>
                   <div></div>
                 </div>
-                <div className='loading-text-container text-center'>Generating...</div>
+                <div className='loading-text-container text-center'>Generating...Please wait 1-2 minutes</div>
             </div>
             }
             <div className='step-button-container flex flex-row justify-center items-center'>
@@ -50,7 +50,7 @@ function Step2({isFetchLoading, submitHandler, prevStep, numberOfSlides, setNumb
                   }}
                 >
                 <Button size='large' className='next-step-button cursor-pointer mr-5' onClick={prevStep}>Previous Step</Button>
-                <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' onClick={submitHandler}>{submitBtnName}</Button>
+                <Button size='large' className='cursor-pointer bg-[#e52991]' type='primary' loading={isFetchLoading} onClick={submitHandler}>{submitBtnName}</Button>
               </ConfigProvider>
             </div>
         </div>

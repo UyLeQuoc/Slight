@@ -45,7 +45,7 @@ function PromotionSection() {
                 )}
                 <ul className='perks-container'>
                     <li>
-                        3 Presentaions / month
+                        3 Presentations / month
                     </li>
                     <li>
                         2500 Characters Input / Presentations
@@ -82,7 +82,7 @@ function PromotionSection() {
                 
                 <ul className='perks-container'>
                     <li>
-                        10 Presentaions / month
+                        10 Presentations / month
                     </li>
                     <li>
                         6000 Characters Input / Presentations
