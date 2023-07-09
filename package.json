@@ -14,6 +14,7 @@
     "@stripe/stripe-js": "^1.54.0",
     "antd": "^5.5.1",
     "autoprefixer": "10.4.14",
+    "docxyz": "^0.2.3",
     "dotenv": "^16.1.1",
     "fabric": "^5.3.0",
     "fabricjs-react": "^1.2.0",
