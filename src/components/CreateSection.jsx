@@ -54,8 +54,7 @@ function CreateSection() {
       return;
     }
     if (topic.length > 150){
-      setMessage("Your topic is too long. The limit is 150 chracters or roughly 25 words.");
-      return;
+      setMessage("Your topic is too long. The recommended length is 150 chracters or roughly 25 words. Going over the recommended length is will reduce your chance of a successful message geneeration.");
     }
     setStep(step + 1);
   
