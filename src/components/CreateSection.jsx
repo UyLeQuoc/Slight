@@ -69,7 +69,7 @@ function CreateSection() {
     setSubmitBtnName("Submitted");
     console.log("submitHandler", topic, numberOfSlides, wordsPerSlide);
     setIsFetchLoading(true);
-    fetch('https://slight-gen-api.onrender.com/generate', {
+    fetch('https://slight.onrender.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
