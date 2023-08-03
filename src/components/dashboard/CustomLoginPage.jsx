@@ -42,6 +42,7 @@ const CustomLoginForm = props => (
 const CustomLoginPage = props => (
   <Login {...props}>
     <CustomLoginForm {...props}/>
+    <h1 />
   </Login>
 );
 
