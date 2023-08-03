@@ -1,4 +1,4 @@
-import { Admin, EditGuesser, ListGuesser, Resource, ShowGuesser } from "react-admin";
+import { Admin, EditGuesser, ListGuesser, Resource, ShowGuesser, useCreateController } from "react-admin";
 import {
   FirebaseDataProvider,
   FirebaseAuthProvider
@@ -8,6 +8,7 @@ import { clientCredentials as config } from '@/config/firebase.config';
 import { UserList } from "./UserList";
 import { UserShow } from "./UserShow";
 import { UserEdit } from "./UserEdit";
+import { UserCreate } from "./UserCreate";
 
 const options = {
   logging: true,
@@ -23,13 +24,13 @@ function Dashboard() {
   return (
     <Admin
         dataProvider={dataProvider}
-        authProvider={authProvider}
       >
         <Resource 
           name="users"
           list={UserList}
-          show={UserShow}
           edit={UserEdit}
+          show={UserShow}
+          create={UserCreate}
         />
       </Admin>
   )
